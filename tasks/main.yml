@@ -16,3 +16,7 @@
   with_items:
       - wget
       - sed
+
+- name: Get pip
+  easy_install: 
+    name: pip
