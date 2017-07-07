@@ -14,9 +14,13 @@
   become: true
   become_user: root
   with_items:
+      - zlib-devel
       - wget
       - sed
 
 - name: Get pip
-  easy_install: 
+  easy_install:
     name: pip
+  become: true
+  become_user: root
+    
