@@ -23,4 +23,9 @@
     name: pip
   become: true
   become_user: root
-    
+
+- name: Install ftp and python-devel
+  yum: name={{ item }} state=present
+  with_items:
+      - python-devel
+      - ftp
