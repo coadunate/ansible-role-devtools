@@ -1,13 +1,29 @@
 ---
 # tasks file for ansible-role-devtools
 
+- name: "Assume yes for yum: 1"
+  lineinfile:
+    path: /etc/yum.conf
+    regexp: 'assumeyes=.'
+    line: 'assumeyes=1'
+
+- name: Update yum
+  command: yum update
+  become: true
+  become_user: root
+  
+- name: "Assume yes for yum: 0"
+  lineinfile:
+    path: /etc/yum.conf
+    regexp: 'assumeyes=.'
+    line: 'assumeyes=0'
+
 - name: Install Development Tools
   yum: 
     name: "@Development Tools"
     state: present
   become: true
   become_user: root
-
 
 - name: Ensure that the required packages are present
   yum: name={{ item }} state=present
