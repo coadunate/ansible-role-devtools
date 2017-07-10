@@ -29,3 +29,10 @@
   with_items:
       - python-devel
       - ftp
+
+- name: Install java
+  yum:
+      name: java
+      state: present
+  become: true
+  become_user: root
