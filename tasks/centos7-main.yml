@@ -1,24 +1,20 @@
-<<<<<<< HEAD
-=======
 ---
 # tasks file for ansible-role-devtools
 
-- name: "Assume yes for yum: 1"
-  lineinfile:
-    path: /etc/yum.conf
-    regexp: 'assumeyes=.'
-    line: 'assumeyes=1'
-
-- name: Update yum
-  command: yum update
+- name: Update yum and Install EPEL repo for EPEL
+  yum:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
+    state: present
+    update_cache: yes
   become: true
   become_user: root
-  
-- name: "Assume yes for yum: 0"
-  lineinfile:
-    path: /etc/yum.conf
-    regexp: 'assumeyes=.'
-    line: 'assumeyes=0'
+
+- name: Import EPEL GPG Key
+  rpm_key:
+    key: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
+    state: present
+  become: true
+  become_user: root
 
 - name: Install Development Tools
   yum: 
@@ -35,23 +31,12 @@
       - zlib-devel
       - wget
       - sed
+      - python-devel
+      - ftp
+      - java
 
 - name: Get pip
   easy_install:
     name: pip
   become: true
   become_user: root
-
-- name: Install ftp and python-devel
-  yum: name={{ item }} state=present
-  with_items:
-      - python-devel
-      - ftp
-
-- name: Install java
-  yum:
-      name: java
-      state: present
-  become: true
-  become_user: root
->>>>>>> upstream/master
