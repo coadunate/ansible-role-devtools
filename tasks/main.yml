@@ -2,5 +2,9 @@
 
 # Provisioning steps
 
-- name:
-  shell: echo hi
+
+- include: redhat-main.yml
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == '7'
+
+- include: debian-main.yml
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == '16'

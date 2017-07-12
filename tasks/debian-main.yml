@@ -2,37 +2,38 @@
 # tasks file for ansible-role-devtools
 
 - name: Install Development Tools
-  yum: 
-    name: "@Development Tools"
+  apt: 
+    name: build-essential
     state: present
   become: true
   become_user: root
 
 
 - name: Ensure that the required packages are present
-  yum: name={{ item }} state=present
+  apt: name={{ item }} state=present
   become: true
   become_user: root
   with_items:
-      - zlib-devel
+      - zlib1g-dev  
       - wget
       - sed
 
-- name: Get pip
-  easy_install:
-    name: pip
+- name: Install Python pip
+  apt:
+    name: python-pip
   become: true
   become_user: root
 
 - name: Install ftp and python-devel
-  yum: name={{ item }} state=present
+  apt: name={{ item }} state=present
   with_items:
-      - python-devel
+      - python-dev
       - ftp
 
 - name: Install java
-  yum:
-      name: java
-      state: present
+  apt:
+    name: default-jre
+    state: present
   become: true
   become_user: root
+  
