@@ -1,0 +1,42 @@
+---
+# tasks file for ansible-role-devtools
+
+- name: Update yum and Install EPEL repo for EPEL
+  yum:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
+    state: present
+    update_cache: yes
+  become: true
+  become_user: root
+
+- name: Import EPEL GPG Key
+  rpm_key:
+    key: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
+    state: present
+  become: true
+  become_user: root
+
+- name: Install Development Tools
+  yum: 
+    name: "@Development Tools"
+    state: present
+  become: true
+  become_user: root
+
+- name: Ensure that the required packages are present
+  yum: name={{ item }} state=present
+  become: true
+  become_user: root
+  with_items:
+      - zlib-devel
+      - wget
+      - sed
+      - python-devel
+      - ftp
+      - java
+
+- name: Get pip
+  easy_install:
+    name: pip
+  become: true
+  become_user: root
