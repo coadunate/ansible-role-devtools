@@ -18,4 +18,5 @@ galaxy_info:
       - development
       - gcc
 
-dependencies: []
+dependencies:
+  - coadunate.epel
