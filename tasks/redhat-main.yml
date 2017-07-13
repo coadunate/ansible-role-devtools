@@ -34,7 +34,7 @@
       - python-devel
       - ftp
       - java
-
+      - mercurial
 - name: Get pip
   easy_install:
     name: pip

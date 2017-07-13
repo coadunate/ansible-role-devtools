@@ -8,7 +8,7 @@ galaxy_info:
     - name: EL 
       versions:
        - 7
-    - name: Ubuntu
+    - name: Debian
       versions:
        - 16.04 
   galaxy_tags:
