@@ -10,7 +10,7 @@ galaxy_info:
        - 7
     - name: Ubuntu
       versions:
-       - xenail
+       - xenial 
   galaxy_tags:
       - centos7
       - ubuntu16.04
