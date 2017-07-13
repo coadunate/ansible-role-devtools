@@ -9,7 +9,7 @@
   become_user: root
 
 
-- name: Ensure that the required packages are present
+- name: Ensure that the required packages are present including Python PIP
   apt: name={{ item }} state=present
   become: true
   become_user: root
@@ -17,23 +17,8 @@
       - zlib1g-dev  
       - wget
       - sed
-
-- name: Install Python pip
-  apt:
-    name: python-pip
-  become: true
-  become_user: root
-
-- name: Install ftp and python-devel
-  apt: name={{ item }} state=present
-  with_items:
       - python-dev
       - ftp
+      - default-jre
+      - python-pip
 
-- name: Install java
-  apt:
-    name: default-jre
-    state: present
-  become: true
-  become_user: root
-  
