@@ -21,4 +21,4 @@
       - ftp
       - default-jre
       - python-pip
-
+      - mercurial
