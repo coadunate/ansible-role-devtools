@@ -8,9 +8,9 @@ galaxy_info:
     - name: EL 
       versions:
        - 7
-    - name: Debian
+    - name: Ubuntu
       versions:
-       - 16.04 
+       - xenail
   galaxy_tags:
       - centos7
       - ubuntu16.04
