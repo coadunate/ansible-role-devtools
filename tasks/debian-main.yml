@@ -22,3 +22,9 @@
       - default-jre
       - python-pip
       - mercurial
+      - git
+
+- name: Install numpy
+  pip:
+      name: numpy
+

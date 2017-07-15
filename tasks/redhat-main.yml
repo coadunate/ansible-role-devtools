@@ -35,8 +35,13 @@
       - ftp
       - java
       - mercurial
+      - git
 - name: Get pip
   easy_install:
     name: pip
   become: true
   become_user: root
+
+- name: Install numpy
+  pip:
+      name: numpy
