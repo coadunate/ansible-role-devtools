@@ -23,6 +23,7 @@
       - python-pip
       - mercurial
       - git
+      - unzip
 
 - name: Install numpy
   pip:
