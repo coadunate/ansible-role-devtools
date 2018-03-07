@@ -1,2 +1,2 @@
-localhost
-
+[testing]
+container ansible_host=127.0.0.1 ansible_port=1234 ansible_user=root ansible_ssh_pass=toor
