@@ -45,3 +45,5 @@
 - name: Install numpy
   pip:
       name: numpy
+  become: true
+  become_user: root
